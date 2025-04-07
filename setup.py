@@ -9,7 +9,7 @@ except FileNotFoundError:
 setup(
     packages = find_packages(),
     name = 'vpnconf',
-    version = '0.0.1',
+    version = '0.0.2',
     author = "Stanislav Doronin",
     author_email = "mugisbrows@gmail.com",
     url = 'https://github.com/mugiseyebrows/vpnconf.git',
