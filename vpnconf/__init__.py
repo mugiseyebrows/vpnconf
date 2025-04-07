@@ -61,7 +61,8 @@ disable-dco
 key-direction 1
 """, file = f)
     elif ext == '.zip':
-        with open(f"{name}.conf", "w", encoding='utf-8') as f:
+        conf_path = f"{name}.conf"
+        with open(conf_path, "w", encoding='utf-8') as f:
             print(f"""client
 dev tun
 remote {args.host}
@@ -73,8 +74,9 @@ tls-auth ta.key 1
         if os.path.exists(output):
             os.remove(output)
         with zipfile.ZipFile(output, 'w') as z:
-            for path in [f"{name}.conf", args.ca, args.ta, cert_path, key_path]:
+            for path in [conf_path, args.ca, args.ta, cert_path, key_path]:
                 z.write(path, arcname=os.path.basename(path))
+        os.remove(conf_path)
 
 if __name__ == "__main__":
     main()
